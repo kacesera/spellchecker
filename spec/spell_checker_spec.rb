@@ -19,5 +19,12 @@ describe SpellCheck do
         expect(checker.check_spelling).to eq "These words are spelled ~correclty~"
       end
     end
+
+    context "two words are misspelled" do
+      it 'returns the string with both words highlighted' do
+        checker = SpellCheck.new("These words are spnelt correclty")
+        expect(checker.check_spelling).to eq "These words are ~spnelt~ ~correclty~"
+      end
+    end
   end
 end
