@@ -4,8 +4,13 @@ describe SpellCheck do
 
   describe "#check_spelling" do
     it "returns a string" do
-      checker = SpellCheck.new("My spelling is great!")
-      expect(checker.check_spelling).to eq "My spelling is great!"
+      checker = SpellCheck.new("My spelling is great")
+      expect(checker.check_spelling).to eq "My spelling is great"
+    end
+
+    it "returns the string with a misspelled word highlighted" do
+      checker = SpellCheck.new("My spelling is gr8")
+      expect(checker.check_spelling).to eq "My spelling is ~gr8~"
     end
   end
 end
