@@ -1,0 +1,3 @@
+class SpellCheck
+
+end
