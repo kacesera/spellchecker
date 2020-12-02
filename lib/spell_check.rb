@@ -10,13 +10,27 @@ class SpellCheck
 
   def check_spelling
     @sentence.map! do |word|
-      if !@dictionary.include?(word.downcase)
-        "~#{word}~"
-      else
-        word
-      end
+      check_word(word)
     end
+    highlighted_sentence
+  end
+
+  private
+
+  def check_word(word)
+    if !dictionary_has?(word)
+      "~#{word}~"
+    else
+      word
+    end
+  end
+
+  def highlighted_sentence
     @sentence.join(" ")
+  end
+
+  def dictionary_has?(word)
+    @dictionary.include?(word.downcase)
   end
 
 end
