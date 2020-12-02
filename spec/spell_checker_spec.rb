@@ -26,5 +26,12 @@ describe SpellCheck do
         expect(checker.check_spelling).to eq "These words are ~spnelt~ ~correclty~"
       end
     end
+
+    context "All words are misspelled" do
+      it 'returns the string with all words highlighted' do
+        checker = SpellCheck.new("Thes uords ae spnelt correclty")
+        expect(checker.check_spelling).to eq "~Thes~ ~uords~ ~ae~ ~spnelt~ ~correclty~"
+      end
+    end
   end
 end
