@@ -12,5 +12,12 @@ describe SpellCheck do
       checker = SpellCheck.new("My spelling is gr8")
       expect(checker.check_spelling).to eq "My spelling is ~gr8~"
     end
+
+    context "correctly is misspelled" do
+      it "returns the string with 'correctly' highlighted" do
+        checker = SpellCheck.new("These words are spelled correclty")
+        expect(checker.check_spelling).to eq "These words are spelled ~correclty~"
+      end
+    end
   end
 end

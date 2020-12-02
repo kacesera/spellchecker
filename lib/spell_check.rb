@@ -1,13 +1,16 @@
+require 'csv'
+
 class SpellCheck
 
   def initialize(sentence)
     @sentence = sentence.split
+    @dictionary = []
+    File.foreach('./dictionary/words.csv') { |line| @dictionary << line.chomp }
   end
 
   def check_spelling
-    example = "My spelling is great".split
     @sentence.map! do |word|
-      if !example.include?(word)
+      if !@dictionary.include?(word.downcase)
         "~#{word}~"
       else
         word
